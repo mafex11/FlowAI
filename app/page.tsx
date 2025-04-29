@@ -27,6 +27,8 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { ContactForm } from "./comp/contact-form";
 import { Button } from "@/components/ui/button";
+import { PricingCard } from "./comp/pricing-card";
+
 
 export function NavbarDemo() {
   const navItems = [
@@ -148,6 +150,35 @@ const DATA = {
   },
 };
 
+const PLANS = [
+  {
+    title: "Monthly",
+    price: "$7",
+    duration: "month",
+    features: [
+      "Full access to all features",
+      "Basic AI tools",
+      "1GB Cloud Storage",
+      "Email Support",
+      "Regular Updates"
+    ]
+  },
+  {
+    title: "Annual",
+    price: "$25",
+    duration: "year",
+    recommended: true,
+    features: [
+      "Everything in Monthly plus:",
+      "Advanced AI tools",
+      "5GB Cloud Storage",
+      "Priority Support",
+      "Exclusive Features",
+      "Early Access to New Tools"
+    ]
+  }
+];
+
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center pb-24">
@@ -186,6 +217,28 @@ export default function Home() {
     </div>
 
     <OrbitingCirclesDemo />
+     {/* Pricing Section */}
+     <section className="w-full px-4 md:px-0 mt-20 mb-20" id="pricing">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+          Flexible Pricing Plans
+        </h2>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          {PLANS.map((plan) => (
+            <PricingCard
+              key={plan.title}
+              className={plan.recommended ? "border-primary/20" : ""}
+              title={plan.title}
+              price={plan.price}
+              duration={plan.duration}
+              features={plan.features}
+              recommended={plan.recommended}
+            />
+          ))}
+        </div>
+        <p className="text-center text-muted-foreground mt-6">
+          Both plans come with a 14-day money-back guarantee
+        </p>
+      </section>
 
     {/* Contact Section */}
     <section className="w-full max-w-2xl px-4 md:px-0 mt-20 mb-40">
@@ -197,8 +250,10 @@ export default function Home() {
       </div>
     </section>
 
+    
+
     {/* Fixed Bottom Dock */}
-    <div className="fixed bottom-4 left-0 right-0 z-50">
+    <div className="fixed bottom-14 left-0 right-0 z-50">
       <FloatingDockDemo />
     </div>
   </div>
