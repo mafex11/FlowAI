@@ -29,7 +29,7 @@ import { ContactForm } from "./comp/contact-form";
 import { Button } from "@/components/ui/button";
 import { PricingCard } from "./comp/pricing-card";
 import { FeatureSection } from "./comp/feature-section";
-export function NavbarDemo() {
+ function NavbarDemo() {
   const navItems = [
     { name: "Features", link: "#features" },
     { name: "Pricing", link: "#pricing" },
