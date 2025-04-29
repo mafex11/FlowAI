@@ -15,7 +15,9 @@ import { LineShadowTextDemo } from "./comp/shadowtext";
 import { NumberTickerDemo } from "./comp/numticker";
 import { MorphingTextDemo } from "./comp/textmorph";
 import { FloatingDockDemo } from "./comp/dock";
-import { TextReveal } from "@/components/magicui/text-reveal";
+// import { TextReveal } from "@/components/magicui/text-reveal";
+import { Navbar } from "@/components/navbar";
+import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
@@ -97,24 +99,43 @@ const DATA = {
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center bg-black">
-    {/* <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
-      Keep Your Study Materials in check!
-    </span> */}
+    <div className="flex flex-col items-center justify-center pb-24"> {/* Added padding-bottom */}
+    <Navbar/>
 
-    {/* <TextReveal>Magic UI will change the way you design.</TextReveal>; */}
-    <MorphingTextDemo/>
+    {/* Centered Morphing Text Section */}
+    <div className="flex-1 flex items-center justify-center w-full">
+      <div className="mx-auto max-w-screen-lg text-center w-full">
+        <MorphingTextDemo/>
+      </div>
+    </div>
 
-    <div className="flex flex-col items-center justify-center mt-10" >
-    <LineShadowTextDemo/>
-    
-    <span className="whitespace-pre-wrap text-6xl  tracking-tighter font-extrabold text-black dark:text-white "><NumberTickerDemo/>
-    + Students Using</span>
+    {/* Flickering Grid Container */}
+    <div className="relative h-64 w-full max-w-2xl mx-auto my-8">
+      <FlickeringGrid
+        className="absolute inset-0 z-0 size-full rounded-2xl"
+        squareSize={2}
+        gridGap={4}
+        color="#6B7280"
+        maxOpacity={0.3}
+        flickerChance={0.05}
+        height={300}
+        width={800}
+      />
+      <div className="relative z-10 flex flex-col items-center justify-center h-full  gap-4">
+        <LineShadowTextDemo/>
+        <span className="whitespace-pre-wrap text-6xl tracking-tighter font-light text-black dark:text-white">
+          <NumberTickerDemo/>+ Students Using
+        </span>
+      </div>
     </div>
 
     <OrbitingCirclesDemo/>
 
+    {/* Fixed Bottom Dock */}
+    <div className="fixed bottom-4 left-0 right-0 z-50"> {/* Added fixed positioning */}
       <FloatingDockDemo/>
+    </div>
+
 {/*
     <TooltipProvider>
       <Dock direction="middle">
