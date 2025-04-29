@@ -28,8 +28,7 @@ import {
 import { ContactForm } from "./comp/contact-form";
 import { Button } from "@/components/ui/button";
 import { PricingCard } from "./comp/pricing-card";
-
-
+import { FeatureSection } from "./comp/feature-section";
 export function NavbarDemo() {
   const navItems = [
     { name: "Features", link: "#features" },
@@ -216,7 +215,13 @@ export default function Home() {
       </div>
     </div>
 
+
+
     <OrbitingCirclesDemo />
+
+     {/* Features Section */}
+     <FeatureSection />
+
      {/* Pricing Section */}
      <section className="w-full px-4 md:px-0 mt-20 mb-20" id="pricing">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
