@@ -18,5 +18,10 @@ const texts = [
 ];
 
 export function MorphingTextDemo() {
-  return <MorphingText className="max-w-9xl flex justify-center text-7xl mx-auto mt-40" texts={texts} />;
+  return (
+    <MorphingText 
+      className="max-w-9xl flex justify-center text-4xl md:text-6xl lg:text-7xl mx-auto" 
+      texts={texts} 
+    />
+  );
 }
