@@ -7,12 +7,7 @@ import React from "react";
 // import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger,} from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { OrbitingCirclesDemo } from "./comp/orbit";
@@ -107,7 +102,7 @@ export default function Home() {
       Keep Your Study Materials in check!
     </span> */}
 
-    <TextReveal>Magic UI will change the way you design.</TextReveal>;
+    {/* <TextReveal>Magic UI will change the way you design.</TextReveal>; */}
     <MorphingTextDemo/>
 
     <div className="flex flex-col items-center justify-center mt-10" >
