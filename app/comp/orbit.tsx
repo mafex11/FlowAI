@@ -3,7 +3,7 @@ import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
 
 export function OrbitingCirclesDemo() {
   return (
-    <div className="relative flex h-[300px] md:h-[500px] w-full flex-col items-center justify-center overflow-hidden">
+    <div className="relative flex h-[100px] md:h-[350px] w-full flex-col items-center justify-center overflow-hidden">
       <OrbitingCircles iconSize={30} radius={120}>
         <Icons.whatsapp />
         <Icons.notion />

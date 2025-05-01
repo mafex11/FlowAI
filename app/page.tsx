@@ -184,7 +184,7 @@ export default function Home() {
     <NavbarDemo />
 
     {/* Hero Section */}
-    <div className="flex-1 flex items-center justify-center w-full mt-20 md:mt-40">
+    <div className="flex-1 flex items-center justify-center w-full mt-20 md:mt-30">
       <div className="mx-auto max-w-screen-lg text-center w-full px-4">
         <MorphingTextDemo />
         <a href="#try-now" className="mt-8 inline-block">
