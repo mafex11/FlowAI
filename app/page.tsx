@@ -152,7 +152,7 @@ const DATA = {
 const PLANS = [
   {
     title: "Monthly",
-    price: "$7",
+    price: "$5",
     duration: "month",
     features: [
       "Full access to all features",
@@ -164,7 +164,7 @@ const PLANS = [
   },
   {
     title: "Annual",
-    price: "$25",
+    price: "$15",
     duration: "year",
     recommended: true,
     features: [
@@ -240,9 +240,9 @@ export default function Home() {
             />
           ))}
         </div>
-        <p className="text-center text-muted-foreground mt-6">
+        {/* <p className="text-center text-muted-foreground mt-6">
           Both plans come with a 14-day money-back guarantee
-        </p>
+        </p> */}
       </section>
 
     {/* Contact Section */}
