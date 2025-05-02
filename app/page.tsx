@@ -8,11 +8,11 @@ import { Separator } from "@/components/ui/separator";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { Dock, DockIcon } from "@/components/magicui/dock";
-import { OrbitingCirclesDemo } from "./comp/orbit";
-import { LineShadowTextDemo } from "./comp/shadowtext";
-import { NumberTickerDemo } from "./comp/numticker";
-import { MorphingTextDemo } from "./comp/textmorph";
-import { FloatingDockDemo } from "./comp/dock";
+import { OrbitingCirclesDemo } from "../components/comp/orbit";
+import { LineShadowTextDemo } from "../components/comp/shadowtext";
+import { NumberTickerDemo } from "../components/comp/numticker";
+import { MorphingTextDemo } from "../components/comp/textmorph";
+import { FloatingDockDemo } from "../components/comp/dock";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import {
   Navbar,
@@ -25,10 +25,15 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-import { ContactForm } from "./comp/contact-form";
+import { ContactForm } from "../components/comp/contact-form";
 import { Button } from "@/components/ui/button";
-import { PricingCard } from "./comp/pricing-card";
-import { FeatureSection } from "./comp/feature-section";
+import { PricingCard } from "../components/comp/pricing-card";
+import { FeatureSection } from "../components/comp/feature-section";
+import { IntroDisclosureDemo } from "../components/comp/introdisclosure";
+import { SidePanel } from "@/components/ui/side-panel"
+
+
+
  function NavbarDemo() {
   const navItems = [
     { name: "Features", link: "#features" },
@@ -44,7 +49,9 @@ import { FeatureSection } from "./comp/feature-section";
         <NavbarLogo />
         <NavItems items={navItems} />
         <div className="flex items-center gap-4">
-          <NavbarButton variant="secondary">Login</NavbarButton>
+        <Link href="/login">
+           <NavbarButton>Login</NavbarButton>
+        </Link>
           <NavbarButton variant="primary">Book a call</NavbarButton>
         </div>
       </NavBody>
@@ -148,7 +155,6 @@ const DATA = {
     },
   },
 };
-
 const PLANS = [
   {
     title: "Monthly",
@@ -173,21 +179,64 @@ const PLANS = [
       "5GB Cloud Storage",
       "Priority Support",
       "Exclusive Features",
-      "Early Access to New Tools"
+      "Save 70% vs monthly"
+    ]
+  },
+  {
+    title: "3 Years",
+    price: "$25",
+    duration: "3 years",
+    features: [
+      "Everything in Annual plus:",
+      "Premium AI tools",
+      "15GB Cloud Storage",
+      "24/7 VIP Support",
+      "Early Access to Beta Features",
+      "Save 83% vs monthly"
     ]
   }
 ];
 
+
+
 export default function Home() {
+
+  const [isOpen, setIsOpen] = useState(false)
+ 
+  const handleIsOpen = () => {
+    setIsOpen(!isOpen)
+  }
+  const renderOpenButton = (handleToggle: () => void) => (
+    <div
+      className={cn(
+        "flex items-center w-full justify-start pr-4 md:pl-4 py-1 md:py-1",
+        isOpen ? "pr-3" : ""
+      )}
+    >
+      <p className="text-xl font-black tracking-tight text-gray-900 sm:text-3xl">
+        <span className="bg-gradient-to-t from-neutral-200 to-stone-300 bg-clip-text font-brand text-xl font-bold text-transparent sm:text-6xl">
+          Open
+        </span>
+      </p>
+      <Button
+        className="rounded-r-[33px] py-8 ml-2 "
+        onClick={handleIsOpen}
+        variant="secondary"
+      >
+        {isOpen ? "close" : "open"}
+      </Button>
+    </div>
+  )
+  
   return (
-    <div className="flex flex-col items-center justify-center pb-24">
+    <div className="flex flex-col items-center justify-center pb-24 w-full">
     <NavbarDemo />
 
     {/* Hero Section */}
-    <div className="flex-1 flex items-center justify-center w-full mt-20 md:mt-30">
-      <div className="mx-auto max-w-screen-lg text-center w-full px-4">
+    <div className="flex-1 flex items-center justify-center w-full mt-40 md:mt-30">
+      <div className="mx-auto max-w-screen-lg text-center w-full px-4 mt-30">
         <MorphingTextDemo />
-        <a href="#try-now" className="mt-8 inline-block">
+        <a href="/try" className="mt-50 inline-block">
           <Button size="lg" className="text-lg px-8 py-6">
             Try Now - It's Free
           </Button>
@@ -205,7 +254,7 @@ export default function Home() {
         maxOpacity={0.3}
         flickerChance={0.05}
         height={300}
-        width={800}
+        width={700}
       />
       <div className="relative z-10 flex flex-col items-center justify-center h-full gap-4">
         <LineShadowTextDemo />
@@ -215,35 +264,33 @@ export default function Home() {
       </div>
     </div>
 
-
-
-    <OrbitingCirclesDemo />
+      <OrbitingCirclesDemo />
 
      {/* Features Section */}
      <FeatureSection />
 
      {/* Pricing Section */}
      <section className="w-full px-4 md:px-0 mt-20 mb-20" id="pricing">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-          Flexible Pricing Plans
-        </h2>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-          {PLANS.map((plan) => (
-            <PricingCard
-              key={plan.title}
-              className={plan.recommended ? "border-primary/20" : ""}
-              title={plan.title}
-              price={plan.price}
-              duration={plan.duration}
-              features={plan.features}
-              recommended={plan.recommended}
-            />
-          ))}
-        </div>
-        {/* <p className="text-center text-muted-foreground mt-6">
-          Both plans come with a 14-day money-back guarantee
-        </p> */}
-      </section>
+  <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+    Flexible Pricing Plans
+  </h2>
+  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    {PLANS.map((plan) => (
+      <PricingCard
+        key={plan.title}
+        className={plan.recommended ? "border-primary/20" : ""}
+        title={plan.title}
+        price={plan.price}
+        duration={plan.duration}
+        features={plan.features}
+        recommended={plan.recommended}
+      />
+    ))}
+  </div>
+
+</section>
+
+<IntroDisclosureDemo/>
 
     {/* Contact Section */}
     <section className="w-full max-w-2xl px-4 md:px-0 mt-20 mb-40">

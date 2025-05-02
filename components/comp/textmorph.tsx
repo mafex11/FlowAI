@@ -20,7 +20,7 @@ const texts = [
 export function MorphingTextDemo() {
   return (
     <MorphingText 
-      className="max-w-9xl flex justify-center text-4xl md:text-6xl lg:text-7xl mx-auto" 
+      className="w-full flex justify-center text-4xl md:text-7xl lg:text-9xl mx-auto" 
       texts={texts} 
     />
   );
