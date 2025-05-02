@@ -35,7 +35,7 @@ import { UserButton, SignInButton, SignedIn, SignedOut } from '@clerk/nextjs';
 
 
 
- function NavbarDemo() {
+function NavbarDemo() {
   const navItems = [
     { name: "Features", link: "#features" },
     { name: "Pricing", link: "#pricing" },
@@ -50,16 +50,18 @@ import { UserButton, SignInButton, SignedIn, SignedOut } from '@clerk/nextjs';
         <NavbarLogo />
         <NavItems items={navItems} />
         <div className="flex items-center gap-4">
-  <SignedOut>
-    <SignInButton>
-      <NavbarButton>Login</NavbarButton>
-    </SignInButton>
-  </SignedOut>
-  <SignedIn>
-    <UserButton afterSignOutUrl="/" />
-  </SignedIn>
-  <NavbarButton variant="primary">Book a call</NavbarButton>
-</div>
+          <SignedOut>
+            <SignInButton>
+              <NavbarButton as="button">Login</NavbarButton>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+          <NavbarButton as="button" variant="primary">
+            Book a call
+          </NavbarButton>
+        </div>
       </NavBody>
 
       <MobileNav>

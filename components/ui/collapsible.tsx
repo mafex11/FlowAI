@@ -17,7 +17,7 @@ function CollapsibleTrigger({
       {...props}
     />
   )
-}
+} 
 
 function CollapsibleContent({
   ...props
