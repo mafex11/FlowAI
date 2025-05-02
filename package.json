@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.18.4",
     "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-accordion": "^1.2.8",
     "@radix-ui/react-alert-dialog": "^1.1.11",
@@ -74,6 +75,7 @@
     "react-use-measure": "^2.1.7",
     "recharts": "^2.15.3",
     "sonner": "^2.0.3",
+    "svix": "^1.64.1",
     "tailwind-merge": "^3.2.0",
     "three": "^0.176.0",
     "vaul": "^1.1.2",

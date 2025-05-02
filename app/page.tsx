@@ -31,6 +31,7 @@ import { PricingCard } from "../components/comp/pricing-card";
 import { FeatureSection } from "../components/comp/feature-section";
 import { IntroDisclosureDemo } from "../components/comp/introdisclosure";
 import { SidePanel } from "@/components/ui/side-panel"
+import { UserButton, SignInButton, SignedIn, SignedOut } from '@clerk/nextjs';
 
 
 
@@ -49,11 +50,16 @@ import { SidePanel } from "@/components/ui/side-panel"
         <NavbarLogo />
         <NavItems items={navItems} />
         <div className="flex items-center gap-4">
-        <Link href="/login">
-           <NavbarButton>Login</NavbarButton>
-        </Link>
-          <NavbarButton variant="primary">Book a call</NavbarButton>
-        </div>
+  <SignedOut>
+    <SignInButton>
+      <NavbarButton>Login</NavbarButton>
+    </SignInButton>
+  </SignedOut>
+  <SignedIn>
+    <UserButton afterSignOutUrl="/" />
+  </SignedIn>
+  <NavbarButton variant="primary">Book a call</NavbarButton>
+</div>
       </NavBody>
 
       <MobileNav>
